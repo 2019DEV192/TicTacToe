@@ -44,7 +44,7 @@ extension GameViewModelImpl: GameViewModel {
     }
     
     func endTurnWithMove(position: Position, player: Player, completion: feedbackClosure?) {
-        
+        completion?(false, [], Player.player1)
     }
     
     func getPlayer(order: PlayerOrder) -> Player {
