@@ -27,6 +27,21 @@ class TestXOTests: XCTestCase {
         XCTAssertEqual(currentPlayer, Player.player1)
     }
     
+    func testPositionuUnavailable () {
+        let p1 = Position(row: 1, column: 1)
+        gameModel3Lines.endTurnWithMove(position: p1, player: Player.player1, completion: nil)
+        
+        XCTAssertEqual(gameModel3Lines.checkPositionAvailable(p1), false)
+    }
+    
+    func testPositionAvailable () {
+        let p1 = Position(row: 1, column: 1)
+        let p2 = Position(row: 2, column: 1)
+        gameModel3Lines.endTurnWithMove(position: p1, player: Player.player1, completion: nil)
+        
+        XCTAssertEqual(gameModel3Lines.checkPositionAvailable(p2), true)
+    }
+    
     func testNextPlayerAtBeginning() {
         let nextPlayer = gameModel3Lines.getPlayer(order: .next)
         XCTAssertEqual(nextPlayer, Player.player2)

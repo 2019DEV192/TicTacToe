@@ -36,5 +36,12 @@ protocol GameViewModel {
     /// resets game
     func reset ()
     
+    /// checks if a position does not have another action on it
+    ///
+    /// - Parameter position: a position to check
+    /// - Returns: true if the position is "free", false otherwise
+    func checkPositionAvailable (_ position: Position) -> Bool
+    
+    //create instance
     static func instantiate (boardSize: Int) -> GameViewModel
 }

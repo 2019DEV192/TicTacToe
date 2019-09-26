@@ -35,6 +35,10 @@ class GameViewModelImpl {
 
 //MARK: implementation GameViewModel
 extension GameViewModelImpl: GameViewModel {
+    func checkPositionAvailable(_ position: Position) -> Bool {
+        return true
+    }
+    
     func getNumberOfGridItems() -> Int {
         return 0
     }
