@@ -15,6 +15,9 @@
 		FA557055233D353F0077D28F /* BoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA557054233D353F0077D28F /* BoardViewController.swift */; };
 		FA557058233D36A90077D28F /* GridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA557057233D36A90077D28F /* GridCell.swift */; };
 		FA55705B233D37F60077D28F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA55705A233D37F60077D28F /* Constants.swift */; };
+		FA557060233D3EFE0077D28F /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA55705D233D3EFE0077D28F /* Position.swift */; };
+		FA557061233D3EFE0077D28F /* GameActionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA55705E233D3EFE0077D28F /* GameActionModel.swift */; };
+		FA557062233D3EFE0077D28F /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA55705F233D3EFE0077D28F /* GameModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +43,9 @@
 		FA557054233D353F0077D28F /* BoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardViewController.swift; sourceTree = "<group>"; };
 		FA557057233D36A90077D28F /* GridCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridCell.swift; sourceTree = "<group>"; };
 		FA55705A233D37F60077D28F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		FA55705D233D3EFE0077D28F /* Position.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
+		FA55705E233D3EFE0077D28F /* GameActionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameActionModel.swift; sourceTree = "<group>"; };
+		FA55705F233D3EFE0077D28F /* GameModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +87,7 @@
 		FA557032233D31E30077D28F /* TestXO */ = {
 			isa = PBXGroup;
 			children = (
+				FA55705C233D3EDC0077D28F /* Models */,
 				FA557059233D37E00077D28F /* Constants */,
 				FA557056233D36810077D28F /* Views */,
 				FA557053233D350B0077D28F /* ViewControllers */,
@@ -124,6 +131,16 @@
 				FA55705A233D37F60077D28F /* Constants.swift */,
 			);
 			path = Constants;
+			sourceTree = "<group>";
+		};
+		FA55705C233D3EDC0077D28F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				FA55705E233D3EFE0077D28F /* GameActionModel.swift */,
+				FA55705F233D3EFE0077D28F /* GameModel.swift */,
+				FA55705D233D3EFE0077D28F /* Position.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -230,6 +247,9 @@
 				FA557034233D31E30077D28F /* AppDelegate.swift in Sources */,
 				FA557055233D353F0077D28F /* BoardViewController.swift in Sources */,
 				FA557058233D36A90077D28F /* GridCell.swift in Sources */,
+				FA557061233D3EFE0077D28F /* GameActionModel.swift in Sources */,
+				FA557060233D3EFE0077D28F /* Position.swift in Sources */,
+				FA557062233D3EFE0077D28F /* GameModel.swift in Sources */,
 				FA55705B233D37F60077D28F /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
