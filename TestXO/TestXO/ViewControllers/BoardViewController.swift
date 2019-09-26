@@ -10,18 +10,21 @@ import UIKit
 class BoardViewController: UIViewController {
 
     //MARK: IBOutlets
-    @IBOutlet weak var restartButton: UIButton!
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var boardCollectionView: UICollectionView!
+    @IBOutlet private weak var restartButton: UIButton!
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var boardCollectionView: UICollectionView!
     
     //MARK: private
     private let sectionMinimumSeparator: CGFloat = 1
     private let boardSize: Int = 3
+    private var gameViewModel: GameViewModel!
     
     //MARK: Lifecycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        initUI()
+        if gameViewModel == nil {
+            gameViewModel = GameViewModelImpl.instantiate(boardSize: boardSize)
+        }
     }
     
     //MARK: IBActions
@@ -31,13 +34,32 @@ class BoardViewController: UIViewController {
     
     //MARK: UI methods
     private func resetGame () {
-        initUI()
-    }
-    
-    private func initUI () {
-        self.titleLabel.text = ""
         self.boardCollectionView.isUserInteractionEnabled = true
         self.boardCollectionView.reloadData()
+        self.gameViewModel.reset()
+        self.updatePlayerLabel()
+    }
+
+    private func updatePlayerLabel () {
+        let player = self.gameViewModel.getPlayer(order: .current)
+        switch player {
+        case .player1:
+            self.titleLabel.text = "Pleayer 1 move"
+        case .player2:
+            self.titleLabel.text = "Pleayer 2 move"
+        }
+    }
+    
+    private func setupGameFinished(winnerPlayer: Player?) {
+        self.boardCollectionView.isUserInteractionEnabled = false
+        if winnerPlayer == Player.player1 {
+            //TODO: should not hardcode that here
+            self.titleLabel.text = "Player 1 won!"
+        } else if winnerPlayer == Player.player2 {
+            self.titleLabel.text = "Player 2 won!"
+        } else {
+            self.titleLabel.text = "Draw"
+        }
     }
     
 }
@@ -45,7 +67,7 @@ class BoardViewController: UIViewController {
 // MARK: - Collection View Datasource
 extension BoardViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 9
+        return gameViewModel.getNumberOfGridItems()
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -65,9 +87,9 @@ extension BoardViewController : UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let paddingSpace = sectionMinimumSeparator * CGFloat(3 - 1)
+        let paddingSpace = sectionMinimumSeparator * CGFloat(gameViewModel.getNumberOfItemsPerRow() - 1)
         let availableWidth: CGFloat = collectionView.bounds.size.width - paddingSpace
-        let sizePerItem: CGFloat = availableWidth / CGFloat(3)
+        let sizePerItem: CGFloat = availableWidth / CGFloat(gameViewModel.getNumberOfItemsPerRow())
         
         return CGSize(width: sizePerItem, height: sizePerItem)
     }
@@ -91,14 +113,27 @@ extension BoardViewController : UICollectionViewDelegateFlowLayout {
         return sectionMinimumSeparator
     }
     
-    func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        guard let cell = collectionView.cellForItem(at: indexPath) as? GridCell else {
-            return false
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let row = indexPath.row / gameViewModel.getNumberOfItemsPerRow()
+        let column = indexPath.row % gameViewModel.getNumberOfItemsPerRow()
+        let newPosition = Position(row: row, column: column)
+        
+        guard let cell = collectionView.cellForItem(at: indexPath) as? GridCell,
+            gameViewModel.checkPositionAvailable(newPosition) else {
+            return
         }
-        if cell.isSelected {
-            return false
+        
+        let player = self.gameViewModel.getPlayer(order: .current)
+        cell.config(player: player)
+        
+        self.gameViewModel.endTurnWithMove(position: newPosition, player: player) { (gameOver, winningPositions, winningPlayer) in
+            if gameOver {
+                self.setupGameFinished(winnerPlayer: winningPlayer)
+            } else {
+                self.updatePlayerLabel()
+            }
         }
-        return true
     }
 
 }
