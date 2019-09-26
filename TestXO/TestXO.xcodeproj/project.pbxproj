@@ -18,6 +18,8 @@
 		FA557060233D3EFE0077D28F /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA55705D233D3EFE0077D28F /* Position.swift */; };
 		FA557061233D3EFE0077D28F /* GameActionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA55705E233D3EFE0077D28F /* GameActionModel.swift */; };
 		FA557062233D3EFE0077D28F /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA55705F233D3EFE0077D28F /* GameModel.swift */; };
+		FA557067233D406A0077D28F /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA557066233D406A0077D28F /* GameViewModel.swift */; };
+		FA557069233D40710077D28F /* GameViewModelImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA557068233D40710077D28F /* GameViewModelImpl.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +48,8 @@
 		FA55705D233D3EFE0077D28F /* Position.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
 		FA55705E233D3EFE0077D28F /* GameActionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameActionModel.swift; sourceTree = "<group>"; };
 		FA55705F233D3EFE0077D28F /* GameModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
+		FA557066233D406A0077D28F /* GameViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
+		FA557068233D40710077D28F /* GameViewModelImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewModelImpl.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +91,7 @@
 		FA557032233D31E30077D28F /* TestXO */ = {
 			isa = PBXGroup;
 			children = (
+				FA557063233D3F800077D28F /* ViewModels */,
 				FA55705C233D3EDC0077D28F /* Models */,
 				FA557059233D37E00077D28F /* Constants */,
 				FA557056233D36810077D28F /* Views */,
@@ -141,6 +146,31 @@
 				FA55705D233D3EFE0077D28F /* Position.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		FA557063233D3F800077D28F /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				FA557065233D3FC10077D28F /* Implementation */,
+				FA557064233D3FB40077D28F /* Interface */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		FA557064233D3FB40077D28F /* Interface */ = {
+			isa = PBXGroup;
+			children = (
+				FA557066233D406A0077D28F /* GameViewModel.swift */,
+			);
+			path = Interface;
+			sourceTree = "<group>";
+		};
+		FA557065233D3FC10077D28F /* Implementation */ = {
+			isa = PBXGroup;
+			children = (
+				FA557068233D40710077D28F /* GameViewModelImpl.swift */,
+			);
+			path = Implementation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -248,8 +278,10 @@
 				FA557055233D353F0077D28F /* BoardViewController.swift in Sources */,
 				FA557058233D36A90077D28F /* GridCell.swift in Sources */,
 				FA557061233D3EFE0077D28F /* GameActionModel.swift in Sources */,
+				FA557067233D406A0077D28F /* GameViewModel.swift in Sources */,
 				FA557060233D3EFE0077D28F /* Position.swift in Sources */,
 				FA557062233D3EFE0077D28F /* GameModel.swift in Sources */,
+				FA557069233D40710077D28F /* GameViewModelImpl.swift in Sources */,
 				FA55705B233D37F60077D28F /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
